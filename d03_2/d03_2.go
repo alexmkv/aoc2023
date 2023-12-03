@@ -70,32 +70,39 @@ func main() {
 		y += 1
 	}
 	H := y
-	safeMark := func(x int, y int) {
+	safeMark := func(x int, y int, cnt *int, mult *int64, uniq map[*Obj]bool) {
 		if x >= 0 && x < W && y >= 0 && y < H {
-			field[x+y*W].marked = true
+			o := field[x+y*W]
+			if o.t == NUM && !uniq[o] {
+				uniq[o] = true
+				*cnt++
+				*mult *= int64(field[x+y*W].val)
+			}
 		}
 
 	}
+	var sum int64
 	for y = 0; y < H; y++ {
 		for x := 0; x < W; x++ {
 			o1 := field[x+y*W]
 			if o1.t == SYMB {
-				safeMark(x-1, y-1)
-				safeMark(x, y-1)
-				safeMark(x+1, y-1)
-				safeMark(x-1, y)
-				safeMark(x+1, y)
-				safeMark(x-1, y+1)
-				safeMark(x, y+1)
-				safeMark(x+1, y+1)
+				var cnt int
+				var mult int64 = 1
+				uniq := make(map[*Obj]bool)
+				safeMark(x-1, y-1, &cnt, &mult, uniq)
+				safeMark(x, y-1, &cnt, &mult, uniq)
+				safeMark(x+1, y-1, &cnt, &mult, uniq)
+				safeMark(x-1, y, &cnt, &mult, uniq)
+				safeMark(x+1, y, &cnt, &mult, uniq)
+				safeMark(x-1, y+1, &cnt, &mult, uniq)
+				safeMark(x, y+1, &cnt, &mult, uniq)
+				safeMark(x+1, y+1, &cnt, &mult, uniq)
+				if cnt == 2 {
+					fmt.Println(x, y)
+					fmt.Println(cnt)
+					sum += mult
+				}
 			}
-		}
-	}
-	sum := 0
-	for _, o := range objs {
-		if o.t == NUM && o.marked {
-			sum += o.val
-			//fmt.Println(o.val)
 		}
 	}
 	fmt.Println(sum)
