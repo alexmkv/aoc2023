@@ -1,0 +1,4 @@
+github.com/ncw/gotemplate v0.0.0-20220504092243-be291eb507fd h1:RKrNRAtTBZ9VW0jhkL/EzjkZYEcp/6NAvDZ9+GNNEEg=
+github.com/ncw/gotemplate v0.0.0-20220504092243-be291eb507fd/go.mod h1:QQRfrLR8GMSC2cCo/aTVLNFOPmOmlVUtHCa3+bPNNEM=
+github.com/ugurcsen/gods-generic v0.10.4 h1:OomH3R2MdzZxpnEPijaD/ncLzV6rpDXd5ruEkWsw0vo=
+github.com/ugurcsen/gods-generic v0.10.4/go.mod h1:mGYOa88Y5sbw+ADXLpScxjJ7s5iHoWya/YHyeQ4f6c4=
