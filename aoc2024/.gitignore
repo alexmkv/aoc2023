@@ -1,0 +1,5 @@
+
+/.local/**
+/.gradle/
+/.idea/
+/build/
